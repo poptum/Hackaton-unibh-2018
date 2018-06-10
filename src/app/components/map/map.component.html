@@ -1,0 +1,23 @@
+<input type="number" [(ngModel)]="raio" (change)="updateAgentes()">
+<div>
+
+  <button (click)="filter()">
+    Filtrar por categoria da ocorrencia
+  </button>
+
+  <button (click)="cleanFilter()">
+    Limpar filtro
+  </button>
+  <div>
+    Agente mais próximo: {{closerAgent}}
+  </div>
+</div>
+
+<agm-map [latitude]="lat" [longitude]="lng">
+  <div *ngFor="let agente of agentes">
+    <agm-marker [label]="agente.labelOpt" [latitude]="agente.lat" [longitude]="agente.long"></agm-marker>
+  </div>
+  <div *ngFor="let ocorrencia of ocorrencias ">
+    <agm-marker [label]="labelOpt" [latitude]="ocorrencia.lat" [longitude]="ocorrencia.long"></agm-marker>
+  </div>
+</agm-map>
